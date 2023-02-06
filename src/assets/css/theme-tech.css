@@ -1,0 +1,6 @@
+html[data-theme="technology"]:root {
+    --theme-color: #05bcb9;
+    --base-background: #030001;
+    --base-border: #13a8a8;
+    --base-text: rgba(255, 255, 255, 0.6);
+}

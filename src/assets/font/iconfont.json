@@ -1,0 +1,16 @@
+{
+  "id": "3533460",
+  "name": "vite-vue3",
+  "font_family": "ds-iconfont",
+  "css_prefix_text": "ds-icon-",
+  "description": "vite + vue3 + pinia + 页面路由 + 组件自动导入",
+  "glyphs": [
+    {
+      "icon_id": "9567572",
+      "name": "menu",
+      "font_class": "menu",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}

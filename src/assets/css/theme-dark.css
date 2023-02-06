@@ -1,0 +1,7 @@
+html[data-theme="dark"]:root {
+    --theme-color: #1a2e45;
+    --base-background: #164c7e;
+    --base-border: #1765ad;
+    --base-text: rgba(255, 255, 255, 0.87);
+}
+
