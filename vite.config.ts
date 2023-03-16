@@ -24,7 +24,7 @@ export default defineConfig({
   plugins: [
     vue(),
     Pages({
-      exclude: ['**/components/*.vue'],
+      exclude: ['**/components/*.vue', '**/*-components/*.vue', '**/*.ts', '**/*.js'],
       dirs: [
         {dir: 'src/pages', baseRoute: ''},
         // { dir: 'src/features/**/pages', baseRoute: 'features' },

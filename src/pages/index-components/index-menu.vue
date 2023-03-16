@@ -48,7 +48,7 @@
           <el-menu-item index="1-1">item one</el-menu-item>
           <el-menu-item index="1-2">item one</el-menu-item>
         </el-menu-item-group>
-        <el-menu-item-group title="Group Two">
+        <el-menu-item-group title="一级菜单">
           <el-menu-item index="1-3">item three</el-menu-item>
         </el-menu-item-group>
         <el-sub-menu index="1-4">
@@ -61,6 +61,12 @@
 </template>
 
 <script lang="ts" setup>
+
+  import {menu} from './menu'
+
+  console.log(menu);
+
+
   const handleOpen = (key: string, keyPath: string[]) => {
     console.log(key, keyPath);
   };
