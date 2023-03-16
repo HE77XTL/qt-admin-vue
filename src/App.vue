@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div>
+    <div class="light-theme">
         <router-view/>
     </div>
 </template>

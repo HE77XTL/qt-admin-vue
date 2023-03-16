@@ -1,77 +1,36 @@
 <template>
   <div class="mainMenu">
     <el-menu
-        default-active="2"
-        class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose">
-      <el-sub-menu index="1">
-        <template #title>
-          <i class="ds-iconfont ds-icon-menu"></i>
-          <span>Navigator One</span>
-        </template>
-        <el-menu-item-group title="Group One">
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item one</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="一级菜单">
-          <el-menu-item index="1-3">item three</el-menu-item>
-        </el-menu-item-group>
-        <el-sub-menu index="1-4">
-          <template #title>item four</template>
-          <el-menu-item index="1-4-1">item one</el-menu-item>
+        default-active="4"
+        class="el-menu-vertical-demo">
+      <template v-for="item in menu" :key="item.id">
+        <el-sub-menu v-if="Array.isArray(item.children)" :index="item.id">
+          <template #title>
+            <span>{{ item.name }}</span>
+          </template>
+          <!--          只做两层，菜单嵌套层数过多体验不好， 如有这样的需求产品应重新考虑展现形式， 例如头部菜单等-->
+          <el-menu-item v-for="subItem in item.children" :index="subItem.id" :key="subItem.id"
+                        @click="onMenuClick(subItem)">
+            <span>{{ subItem.name }}</span>
+          </el-menu-item>
         </el-sub-menu>
-      </el-sub-menu>
+        <el-menu-item v-else :index="item.id" @click="onMenuClick(item)">
+          <span>{{ item.name }}</span>
+        </el-menu-item>
+      </template>
     </el-menu>
   </div>
 </template>
 
 <script lang="ts" setup>
+  import {menu, MenuItemInterface} from './menu';
 
-  import {menu} from './menu'
+  const router = useRouter();
 
-  console.log(menu);
-
-
-  const handleOpen = (key: string, keyPath: string[]) => {
-    console.log(key, keyPath);
-  };
-  const handleClose = (key: string, keyPath: string[]) => {
-    console.log(key, keyPath);
+  const onMenuClick = (data: MenuItemInterface) => {
+    data.url && router.push({
+      path: data.url
+    });
   };
 </script>
 
@@ -79,6 +38,17 @@
   .mainMenu {
     :deep(.el-menu) {
       border-right: none;
+
+      .el-menu-item {
+        &.is-active {
+          background: var(--light-color-2);
+        }
+      }
+
+      .el-menu-item, .el-sub-menu__title {
+        border-bottom: 1px solid var(--dark-color-1);
+      }
+
     }
   }
 </style>

@@ -1,25 +1,40 @@
-const menu: Object[] = [
+export interface MenuItemInterface {
+  name: string;
+  id: string;
+  url?: string;
+  children?: Array<MenuItemInterface>;
+}
+
+
+const menu: Array<MenuItemInterface> = [
   {
-    name: '一级菜单',
-    id: '1',
+    name: 'dashboard',
+    id: 'dashboard',
+    url: '/dashboard'
+  },
+  {
+    name: '页面路由测试',
+    id: 'autoRouterTest',
     children: [
       {
-        name: '1-1菜单',
-        id: '1-1',
+        name: '主题修改',
+        id: 'changeTheme',
+        url: '/theme'
+      },
+      {
+        name: 'heds',
+        id: 'heds',
         url: '/heds'
+      }
+      ,
+      {
+        name: 'test',
+        id: 'test',
+        url: '/test'
       }
     ]
   },
-  {
-    name: '二级菜单',
-    id: '2',
-    url: '/theme'
-  }
 ];
 export {
   menu
 };
-
-// export default  function () {
-//   console.log(1)
-// }

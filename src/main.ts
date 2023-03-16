@@ -17,7 +17,7 @@ const routes = [
     {path: '/', redirect: '/dashboard'}
 ];
 
-const router = createRouter({
+export const router = createRouter({
     history: createWebHashHistory(),
     routes: [
         ...routes,
