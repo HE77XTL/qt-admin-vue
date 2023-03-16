@@ -6,8 +6,9 @@ import messagesaaa from './i18n/i18n'
 
 import App from './App.vue'
 
-
 import pageRoutes from '~pages'
+
+import '~/styles/index.scss'
 
 console.log('pageRoutes');
 console.log(pageRoutes);
