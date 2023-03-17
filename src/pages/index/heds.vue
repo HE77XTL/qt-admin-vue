@@ -3,7 +3,7 @@
      index---heds -- page
   </div>
 </template>
-<style scoped lang="less">
+<style scoped lang="scss">
     .heds {
         width: 2000px;
         height: 3000px;

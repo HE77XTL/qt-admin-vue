@@ -28,7 +28,7 @@
     }
 </script>
 
-<style scoped lang="less">
+<style scoped lang="scss">
     .commonPageWrap {
         padding-top: 30px;
         position: relative;

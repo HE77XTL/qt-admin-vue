@@ -17,7 +17,7 @@
 
 </script>
 
-<style scoped lang="less">
+<style scoped lang="scss">
     .autoBreadcrumb {
         display: flex;
         align-items: center;
