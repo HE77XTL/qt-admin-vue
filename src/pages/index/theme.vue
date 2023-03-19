@@ -17,6 +17,9 @@
 </template>
 
 <script lang="ts" setup>
+  console.log('theme-2');
+
+
     import store from 'store'
     import dayjs from 'dayjs';
 
@@ -26,6 +29,11 @@
         store.set('appTheme', 'technology')
 
     }
+    onMounted(()=> {
+      console.log('theme')
+    })
+
+
 </script>
 
 <style scoped lang="scss">

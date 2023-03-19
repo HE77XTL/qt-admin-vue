@@ -3,6 +3,9 @@
      index---heds -- page
   </div>
 </template>
+<script setup>
+  console.log('heds')
+</script>
 <style scoped lang="scss">
     .heds {
         width: 2000px;

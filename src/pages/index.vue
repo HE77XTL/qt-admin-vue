@@ -15,11 +15,11 @@
       </el-scrollbar>
     </div>
     <div class="layoutContent">
-      <router-view></router-view>
-    </div>
-    <div class="menuOperateIconWrap" @click="onMenuToggle">
-      <i v-show="isCollapse" class="ds-iconfont ds-icon-menu-expand menuOperate"/>
-      <i v-show="!isCollapse" class="ds-iconfont ds-icon-menu-fold menuOperate"/>
+      <router-view v-slot="{ Component, route }">
+        <keep-alive :include="['theme','heds','index-theme']">
+          <component :is="Component"/>
+        </keep-alive>
+      </router-view>
     </div>
   </div>
 </template>
@@ -33,9 +33,6 @@
   const menuStore = menu();
   const {isCollapse} = storeToRefs(menuStore);
 
-  const onMenuToggle = () => {
-    menuStore.toggleCollapseStatus();
-  };
 
 </script>
 
@@ -79,6 +76,10 @@
       overflow-x: auto;
       background: white;
       color: var(--base-text);
+      display: flex;
+      align-items: center;
+      transition: left $menuTransitionTime;
+
     }
 
     .layoutMenu {
@@ -103,29 +104,13 @@
       color: var(--base-text);
     }
 
-    .menuOperateIconWrap {
-      position: absolute;
-      z-index: 1;
-      top: 50%;
-      left: calc($menuWidth - 10px);
-      transform: translateY(-50%);
-      transition: left $menuTransitionTime;
-
-      .menuOperate {
-        font-size: 32px;
-        cursor: pointer;
-      }
-
-    }
-
     &.menuCollapse {
       padding-left: 0;
 
       .layoutMenu {
         width: 0;
       }
-
-      .menuOperateIconWrap {
+      .layoutTab {
         left: 0;
       }
     }

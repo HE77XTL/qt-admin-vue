@@ -9,6 +9,9 @@
     </div>
   </div>
 </template>
+<script setup>
+  console.log('dashboard')
+</script>
 
 <style>
   .commonPageWrap {

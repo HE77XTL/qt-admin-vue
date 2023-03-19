@@ -19,8 +19,8 @@
   </auto-table-page>
 </template>
 
-<script lang="ts">
-
+<script setup >
+  console.log('table')
 </script>
 
 <style lang="scss" scoped>
