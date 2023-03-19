@@ -25,12 +25,16 @@ const menu: Array<MenuItemInterface> = [
         name: 'heds',
         id: 'heds',
         url: '/heds'
-      }
-      ,
+      },
       {
         name: 'test',
         id: 'test',
         url: '/test'
+      },
+      {
+        name: 'table-example',
+        id: 'table-example',
+        url: '/table-example'
       }
     ]
   },
