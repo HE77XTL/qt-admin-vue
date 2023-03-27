@@ -20,6 +20,15 @@ vite-plugin-pages
 ```
 
 
+### 一些备注（未整理）
+````
+1、在 3.2.34 或以上的版本中，使用 <script setup> 的单文件组件会自动根据文件名生成对应的 name 选项，无需再手动声明。
+2、vite-plugin-pages 注册路由 name ， 使用 - 进行多层级拼接(默认) （https://www.npmjs.com/package/vite-plugin-pages）
+3、1和2自动生成的name 在使用KeepAlive 功能的是时候较难自动匹配
+4、vite-plugin-vue-setup-extend 可在 setup 中自定义 name, 为了keepalive 可用， 请正确配置
+
+````
+
 
 
 ### 组价自动导入

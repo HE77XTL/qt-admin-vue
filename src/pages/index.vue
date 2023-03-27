@@ -16,7 +16,7 @@
     </div>
     <div class="layoutContent">
       <router-view v-slot="{ Component, route }">
-        <keep-alive :include="['theme','heds','index-theme']">
+        <keep-alive :include="['theme','index-heds','index-theme']">
           <component :is="Component"/>
         </keep-alive>
       </router-view>
@@ -29,9 +29,19 @@
   import IndexMenu from './index-components/index-menu.vue';
   import IndexHeader from './index-components/index-header.vue';
   import IndexTab from './index-components/index-tab.vue';
-
+  const route = useRoute();
   const menuStore = menu();
   const {isCollapse} = storeToRefs(menuStore);
+
+  // pnpm add -D  vite-plugin-vue-setup-extend
+
+  watch(
+      () => route.name,
+      (val:any)=>{
+        console.log('val');
+        console.log(val);
+      }
+  )
 
 
 </script>

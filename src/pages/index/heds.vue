@@ -3,7 +3,7 @@
      index---heds -- page
   </div>
 </template>
-<script setup>
+<script setup name="index-heds">
   console.log('heds')
 </script>
 <style scoped lang="scss">

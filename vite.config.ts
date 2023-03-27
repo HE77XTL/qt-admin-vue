@@ -1,3 +1,4 @@
+// @ts-ignore
 import path from 'node:path';
 import {defineConfig} from 'vite';
 import {join, resolve} from "path";
@@ -6,6 +7,7 @@ import Pages from 'vite-plugin-pages';
 import Components from 'unplugin-vue-components/vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import {ElementPlusResolver} from 'unplugin-vue-components/resolvers';
+import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -23,6 +25,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    vueSetupExtend(),
     Pages({
       exclude: ['**/components/*.vue', '**/*-components/*.vue', '**/*.ts', '**/*.js'],
       dirs: [
