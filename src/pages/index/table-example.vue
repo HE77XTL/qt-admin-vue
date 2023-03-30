@@ -19,7 +19,7 @@
   </auto-table-page>
 </template>
 
-<script setup >
+<script setup name="index-table-example">
   console.log('table')
 </script>
 

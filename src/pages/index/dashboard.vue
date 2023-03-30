@@ -9,8 +9,11 @@
     </div>
   </div>
 </template>
-<script setup>
+<script ts setup name="index-dashboard">
   console.log('dashboard')
+  onMounted(() => {
+    console.log('dashboard')
+  })
 </script>
 
 <style>

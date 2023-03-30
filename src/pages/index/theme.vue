@@ -16,7 +16,7 @@
     </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup name="index-theme">
   console.log('theme-2');
 
 

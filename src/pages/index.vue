@@ -15,8 +15,9 @@
       </el-scrollbar>
     </div>
     <div class="layoutContent">
+      <div>{{keepAliveComponents}}</div>
       <router-view v-slot="{ Component, route }">
-        <keep-alive :include="['theme','index-heds','index-theme']">
+        <keep-alive :include="keepAliveComponents">
           <component :is="Component"/>
         </keep-alive>
       </router-view>
@@ -29,19 +30,24 @@
   import IndexMenu from './index-components/index-menu.vue';
   import IndexHeader from './index-components/index-header.vue';
   import IndexTab from './index-components/index-tab.vue';
+
   const route = useRoute();
   const menuStore = menu();
   const {isCollapse} = storeToRefs(menuStore);
-
-  // pnpm add -D  vite-plugin-vue-setup-extend
+  const keepAliveComponents = reactive([]);
 
   watch(
       () => route.name,
-      (val:any)=>{
-        console.log('val');
-        console.log(val);
+      (val: string) => {
+        if (keepAliveComponents.includes(val)) {
+          return;
+        }
+        if (keepAliveComponents.length >= 6) {
+          keepAliveComponents.shift();
+        }
+        keepAliveComponents.push(val);
       }
-  )
+  );
 
 
 </script>
@@ -76,6 +82,7 @@
       background-image: linear-gradient(to right top, #1c2b36, #1a323e, #153946, #0d404d, #004853);
       color: white;
     }
+
     .layoutTab {
       top: $headerHeight;
       left: $menuWidth;
@@ -120,6 +127,7 @@
       .layoutMenu {
         width: 0;
       }
+
       .layoutTab {
         left: 0;
       }
