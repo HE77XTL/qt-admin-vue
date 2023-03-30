@@ -4,7 +4,7 @@
       <IndexHeader></IndexHeader>
     </div>
     <div class="layoutTab">
-      <IndexTab></IndexTab>
+      <IndexTab tabs=""></IndexTab>
     </div>
 
     <div class="layoutMenu">
@@ -18,34 +18,55 @@
       <div>{{keepAliveComponents}}</div>
       <router-view v-slot="{ Component, route }">
         <keep-alive :include="keepAliveComponents">
-          <component :is="Component"/>
+          <component :is="Component" ref="indexRouterView"/>
         </keep-alive>
       </router-view>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-  import {storeToRefs} from "pinia";
+  interface TabInterface {
+    componentName: string,
+    showName: string,
+    path?: string
+  }
+
   import {menu} from '../pinia/menu';
   import IndexMenu from './index-components/index-menu.vue';
   import IndexHeader from './index-components/index-header.vue';
   import IndexTab from './index-components/index-tab.vue';
 
-  const route = useRoute();
+
   const menuStore = menu();
   const {isCollapse} = storeToRefs(menuStore);
-  const keepAliveComponents = reactive([]);
 
+  const indexRouterView = ref(null);
+  const tabs: Array<TabInterface> = reactive([]);
+  const breadcrumb = ref([]);
+
+  const keepAliveComponents = computed(() => tabs.map(k => {
+    return k.componentName;
+  }));
+
+  const route = useRoute();
   watch(
       () => route.name,
       (val: string) => {
-        if (keepAliveComponents.includes(val)) {
-          return;
-        }
-        if (keepAliveComponents.length >= 6) {
-          keepAliveComponents.shift();
-        }
-        keepAliveComponents.push(val);
+        nextTick(() => {
+          breadcrumb.value = indexRouterView.value.breadcrumb;
+
+          if (keepAliveComponents.value.includes(val)) {
+            return;
+          }
+          if (tabs.length >= 6) {
+            tabs.shift();
+          }
+          tabs.push({
+            componentName: val,
+            showName: breadcrumb.name,
+            path: breadcrumb.path
+          });
+        });
       }
   );
 

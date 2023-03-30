@@ -4,7 +4,12 @@
   </div>
 </template>
 <script setup name="index-heds">
-  console.log('heds')
+  defineExpose({
+    breadcrumb: [{
+      name: 'heds'
+    }]
+  })
+
 </script>
 <style scoped lang="scss">
     .heds {
