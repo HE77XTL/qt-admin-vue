@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     AutoBreadcrumb: typeof import('./src/components/auto-breadcrumb.vue')['default']
     AutoTablePage: typeof import('./src/components/auto-table-page.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElInput: typeof import('element-plus/es')['ElInput']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']

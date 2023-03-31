@@ -14,7 +14,7 @@ console.log('pageRoutes');
 console.log(pageRoutes);
 
 const routes = [
-    {path: '/', redirect: '/dashboard'}
+    {path: '/', redirect: '/demo'}
 ];
 
 export const router = createRouter({

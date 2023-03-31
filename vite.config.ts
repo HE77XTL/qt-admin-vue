@@ -27,7 +27,7 @@ export default defineConfig({
     vue(),
     vueSetupExtend(),
     Pages({
-      exclude: ['**/components/*.vue', '**/*-components/*.vue', '**/*.ts', '**/*.js'],
+      exclude: ['**/components/*.vue','**/**/components/*.vue', '**/*-components/*.vue', '**/*.ts', '**/*.js'],
       dirs: [
         {dir: 'src/pages', baseRoute: ''},
         // { dir: 'src/features/**/pages', baseRoute: 'features' },
