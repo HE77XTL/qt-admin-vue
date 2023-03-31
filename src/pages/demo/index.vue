@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <FormItem type="input" v-model="aValue"></FormItem>
+  <div class="demoPage">
+    <div>{{aValue}}</div>
+    <div>{{bValue}}</div>
+    <FormItem type="input" v-model="aValue" class="parentDefineClassTets"></FormItem>
+    <FormItem type="select" v-model="bValue" :options="bOptions" class="parentDefineClassTets"></FormItem>
   </div>
 </template>
 <script setup lang="ts">
@@ -12,8 +15,8 @@
 
   import FormItem from './components/form-item.vue';
 
-  const aValue = ref('321312');
-  const bValue = ref('');
+  const aValue = ref('defaultInput');
+  const bValue = ref('apple');
   const bOptions = [
     {
       label: '苹果',
@@ -27,3 +30,12 @@
 
 
 </script>
+
+<style scoped lang="scss">
+  .demoPage {
+    padding: 20px;
+    >div {
+      margin: 10px;
+    }
+  }
+</style>
