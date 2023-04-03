@@ -31,12 +31,7 @@
       }
   );
 
-  watch(
-      value,
-      (val: string) => {
-        emit("update:modelValue", val);
-      }
-  );
+  watch(value, (val: string) => emit("update:modelValue", val));
 
 
 </script>
