@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 // @ts-ignore
 import path from 'node:path';
 import {defineConfig} from 'vite';
@@ -11,6 +12,12 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  test: {
+    environment: 'jsdom',
+    deps: {
+      inline: ['element-plus']
+    }
+  },
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,
@@ -63,6 +70,6 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, '')
       },
     }
-  }
+  },
 });
 
