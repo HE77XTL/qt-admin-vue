@@ -1,7 +1,10 @@
 <template>
   <div class="loginPage">
     <div class="formPanel">
-      <div>注册</div>
+      <div class="tab">
+        <div @click="tabChange('login')" :class="{active: form.type === 'login'}">登录</div>
+        <div @click="tabChange('registry')" :class="{active: form.type === 'registry'}">注册</div>
+      </div>
       <el-form :model="form" label-width="120px">
         <el-form-item label="姓名">
           <el-input v-model="form.name"/>
@@ -24,17 +27,18 @@
     name: "",
     password: "",
     roleId: 1,
+    type: 'login'
   });
 
-
-  onMounted(() => {
-
-  });
+  const tabChange = (type: string) => {
+    form.type = type;
+  };
 
   const submit = () => {
     console.log(22);
     console.log(form);
-    axios.post('http://localhost:8090/registry', {
+    const url = form.type === 'login' ? 'http://localhost:8090/login': 'http://localhost:8090/registry'
+    axios.post(url, {
       ...form
     }).then(res => {
       console.log(res);
@@ -59,6 +63,16 @@
       padding: 20px;
       width: 400px;
       border: 1px solid #cccccc;
+
+      .tab {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+        cursor: pointer;
+        .active {
+          color: var(--base-color);
+        }
+      }
     }
   }
 
