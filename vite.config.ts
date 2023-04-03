@@ -14,9 +14,6 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 export default defineConfig({
   test: {
     environment: 'jsdom',
-    deps: {
-      inline: ['element-plus']
-    }
   },
   resolve: {
     alias: {
