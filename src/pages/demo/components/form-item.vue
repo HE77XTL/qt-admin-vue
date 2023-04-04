@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <el-input v-if="itemVisible('input')" v-model="value" v-bind="$attrs">
+  <div class="formItem">
+    <el-input v-if="itemVisible('input')" v-model="value" v-bind="$attrs" class="formItemInput itemRow">
     </el-input>
-    <el-select v-if="itemVisible('select')" v-model="value" v-bind="$attrs">
+    <el-select v-if="itemVisible('select')" v-model="value" v-bind="$attrs" class="formItemSelect itemRow">
       <el-option
           v-for="item in props.options"
           :key="item.value"
@@ -35,3 +35,11 @@
 
 
 </script>
+
+<style scoped lang="scss">
+  .formItem {
+    .itemRow {
+      width: 280px;
+    }
+  }
+</style>
