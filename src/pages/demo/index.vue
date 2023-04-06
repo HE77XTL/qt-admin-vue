@@ -1,7 +1,5 @@
 <template>
   <div class="demoPage">
-    <div>{{aValue}}</div>
-    <div>{{bValue}}</div>
     <FormItem itemType="input" v-model="aValue" class="parentDefineClassTets"></FormItem>
     <FormItem itemType="select" v-model="bValue" :options="bOptions" class="parentDefineClassTets"></FormItem>
   </div>
@@ -28,14 +26,13 @@
       value: 'banana'
     }
   ];
-
-
 </script>
 
 <style scoped lang="scss">
   .demoPage {
     padding: 20px;
-    >div {
+
+    > div {
       margin: 10px;
     }
   }

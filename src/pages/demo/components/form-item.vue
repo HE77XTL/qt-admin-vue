@@ -26,6 +26,8 @@
   const emit = defineEmits(['input', 'update:modelValue']);
   const value = ref(props.modelValue);
   const itemVisible = (itemType: string): boolean => props.itemType === itemType;
+  console.log('2222')
+  console.log(itemVisible('select'))
   const placeholder = computed(() => {
     if (props.placeholder) {
       return props.placeholder;
