@@ -22,6 +22,10 @@
 <script lang="ts" setup>
   import {onMounted} from 'vue';
   import axios from 'axios';
+  import {vAxios} from '@vUtils';
+
+  const CancelToken = axios.CancelToken;
+  const sourceA = CancelToken.source();
 
   const form = reactive({
     name: "",
@@ -38,11 +42,23 @@
     console.log(22);
     console.log(form);
     const url = form.type === 'login' ? 'http://localhost:8090/login': 'http://localhost:8090/registry'
-    axios.post(url, {
+    const CancelToken = axios.CancelToken;
+    const sourceC = CancelToken.source();
+    vAxios.post(url, {
       ...form
+    }, {
+      cancelToken: sourceC.token
     }).then(res => {
-      console.log(res);
+      console.log('res');
+
+    }).catch(err => {
+      console.log(axios.isCancel(err));
     });
+    console.log('sourceC');
+    console.log(sourceC);
+    console.log('sourceC.cancel');
+    console.log(sourceC.cancel);
+    //sourceC.cancel()
 
   };
 

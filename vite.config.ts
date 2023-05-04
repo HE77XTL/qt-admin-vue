@@ -9,17 +9,19 @@ import AutoImport from 'unplugin-auto-import/vite';
 import {ElementPlusResolver} from 'unplugin-vue-components/resolvers';
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 
+
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
-      '~/': `${path.resolve(__dirname, 'src')}/`,
+      '@/': `${path.resolve(__dirname, 'src')}/`,
+      '@vUtils': `${path.resolve(__dirname, 'src/common/utils.ts')}`,
     },
   },
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "~/styles/element/index.scss" as *;`,
+        additionalData: `@use "@/styles/element/index.scss" as *;`,
       },
     },
   },

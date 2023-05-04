@@ -3,12 +3,14 @@ import {createRouter, createWebHashHistory} from 'vue-router'
 import {createPinia} from 'pinia'
 import {createI18n} from 'vue-i18n'
 import messagesaaa from './i18n/i18n'
+import vHttp from './common/request/vHttp'
 
 import App from './App.vue'
 
 import pageRoutes from '~pages'
 
-import '~/styles/index.scss'
+
+import '@/styles/index.scss'
 
 console.log('pageRoutes');
 console.log(pageRoutes);

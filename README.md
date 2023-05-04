@@ -56,3 +56,10 @@ user 页面， 对应组件文件夹 user-components, 组件名称 user-card.vue
 
 ### z-index 层级分布
 
+### 请求
+```
+axios 库 -> vAxios 请求拦截、封装 ->  vHttp 统一的 get/post/put/delete -> request server -> 页面接口使用
+
+
+```
+
