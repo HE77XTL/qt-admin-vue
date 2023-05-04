@@ -1,15 +1,32 @@
 import axios from 'axios';
+import {AxiosRequestConfig} from 'axios';
 import {ElMessage} from 'element-plus';
+
+import {axiosCancel} from '../../pinia/axiosCancel';
+const axiosCancelStore = axiosCancel();
 
 const instance = axios.create({
   // baseURL: 'https://some-domain.com/api/',
-  timeout: 1000,
+  timeout: 9000,
   headers: {'X-Custom-Header': 'foobar'}
 });
 
+interface RequestConfig extends AxiosRequestConfig {
+  isCancel?: boolean
+}
 
-
-instance.interceptors.request.use(config => {
+instance.interceptors.request.use((config: RequestConfig) => {
+  if (config.isCancel) {
+    const CancelToken = axios.CancelToken;
+    let cancel;
+    config.cancelToken = new CancelToken(function executor(c) {
+      cancel = c;
+    });
+    axiosCancelStore.handleRequest({
+      key: config.url || new Date().getTime().toString(),
+      cancel: cancel
+    });
+  }
   return config;
 });
 
@@ -20,11 +37,6 @@ instance.interceptors.response.use(res => {
   }
   return res;
 }, error => {
-
-  console.log('error');
-  console.log(error);
-  console.log(axios.isCancel(error));
-
   const response = error.response;
   let errorMessage = error.message;
   switch (response.status) {
@@ -42,5 +54,4 @@ instance.interceptors.response.use(res => {
   return Promise.reject(response);
 });
 
-const vAxios = instance;
-export default vAxios;
+export default instance;

@@ -24,8 +24,6 @@
   import axios from 'axios';
   import {vAxios} from '@vUtils';
 
-  const CancelToken = axios.CancelToken;
-  const sourceA = CancelToken.source();
 
   const form = reactive({
     name: "",
@@ -41,24 +39,29 @@
   const submit = () => {
     console.log(22);
     console.log(form);
-    const url = form.type === 'login' ? 'http://localhost:8090/login': 'http://localhost:8090/registry'
+    const url = form.type === 'login' ? 'http://localhost:8090/login' : 'http://localhost:8090/registry';
+
+
     const CancelToken = axios.CancelToken;
-    const sourceC = CancelToken.source();
+    let cancel;
+
+
     vAxios.post(url, {
       ...form
     }, {
-      cancelToken: sourceC.token
+      isCancel: true
+      // cancelToken: new CancelToken(function executor(c) {
+      //   cancel = c;
+      // })
     }).then(res => {
       console.log('res');
 
     }).catch(err => {
       console.log(axios.isCancel(err));
     });
-    console.log('sourceC');
-    console.log(sourceC);
-    console.log('sourceC.cancel');
-    console.log(sourceC.cancel);
-    //sourceC.cancel()
+    // console.log('cancel');
+    // console.log(cancel);
+    // cancel()
 
   };
 
@@ -85,6 +88,7 @@
         justify-content: center;
         margin-bottom: 30px;
         cursor: pointer;
+
         .active {
           color: var(--base-color);
         }
