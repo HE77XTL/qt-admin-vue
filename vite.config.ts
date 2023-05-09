@@ -14,7 +14,7 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 export default defineConfig({
   resolve: {
     alias: {
-      '@/': `${path.resolve(__dirname, 'src')}/`,
+      '@/': `/src`,
       '@vUtils': `${path.resolve(__dirname, 'src/common/utils.ts')}`,
     },
   },
