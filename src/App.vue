@@ -1,12 +1,13 @@
 <script setup lang="ts">
-  console.log('app-xxx');
-  import 'element-plus/es/components/message/style/css'
+  import {vantThemeVars} from './vantTheme/vantTheme';
 </script>
 
 <template>
-  <div class="light-theme">
-    <router-view/>
-  </div>
+  <van-config-provider :theme-vars="vantThemeVars">
+    <div>
+      <router-view/>
+    </div>
+  </van-config-provider>
 </template>
 
 <style>

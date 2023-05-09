@@ -6,8 +6,8 @@ import vue from '@vitejs/plugin-vue';
 import Pages from 'vite-plugin-pages';
 import Components from 'unplugin-vue-components/vite';
 import AutoImport from 'unplugin-auto-import/vite';
-import {ElementPlusResolver} from 'unplugin-vue-components/resolvers';
-import vueSetupExtend from 'vite-plugin-vue-setup-extend'
+import {VantResolver} from 'unplugin-vue-components/resolvers';
+import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 
 
 // https://vitejs.dev/config/
@@ -43,14 +43,12 @@ export default defineConfig({
         'vue-router',
         'pinia',
       ],
-      resolvers: [ElementPlusResolver()],
+      resolvers: [VantResolver()],
     }),
     Components({
       dts: true,
       dirs: ['src/components'],
-      resolvers: [ElementPlusResolver({
-        importStyle: "sass"
-      })],
+      resolvers: [VantResolver()],
     })
   ],
   server: {

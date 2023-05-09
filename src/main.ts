@@ -3,7 +3,6 @@ import {createRouter, createWebHashHistory} from 'vue-router'
 import {createPinia} from 'pinia'
 import {createI18n} from 'vue-i18n'
 import messagesaaa from './i18n/i18n'
-import VRequest from './common/request/vHttp'
 
 import App from './App.vue'
 
