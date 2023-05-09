@@ -2,7 +2,7 @@ import axios from 'axios';
 import {AxiosRequestConfig} from 'axios';
 import {ElMessage} from 'element-plus';
 
-import {axiosCancel} from '../../pinia/axiosCancel';
+import {axiosCancel} from '@/pinia/axiosCancel';
 const axiosCancelStore = axiosCancel();
 
 const instance = axios.create({

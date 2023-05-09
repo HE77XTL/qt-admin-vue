@@ -14,14 +14,15 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 export default defineConfig({
   resolve: {
     alias: {
-      '@/': `/src`,
+      "@": path.resolve(__dirname, "src"),
       '@vUtils': `${path.resolve(__dirname, 'src/common/utils.ts')}`,
+      '@vServe': `${path.resolve(__dirname, 'src/common/serve/serve.ts')}`,
     },
   },
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "@/styles/element/index.scss" as *;`,
+        additionalData: `@use "./src/styles/element/index.scss" as *;`,
       },
     },
   },

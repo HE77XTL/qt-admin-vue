@@ -20,10 +20,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import {onMounted} from 'vue';
-  import axios from 'axios';
-  import {vAxios} from '@vUtils';
-
+  import {getApiTest2} from '@vServe';
 
   const form = reactive({
     name: "",
@@ -37,31 +34,12 @@
   };
 
   const submit = () => {
-    console.log(22);
-    console.log(form);
-    const url = form.type === 'login' ? 'http://localhost:8090/login' : 'http://localhost:8090/registry';
 
-
-    const CancelToken = axios.CancelToken;
-    let cancel;
-
-
-    vAxios.post(url, {
-      ...form
-    }, {
-      isCancel: true
-      // cancelToken: new CancelToken(function executor(c) {
-      //   cancel = c;
-      // })
-    }).then(res => {
-      console.log('res');
-
+    getApiTest2({}).then((res) => {
+      console.log(res);
     }).catch(err => {
-      console.log(axios.isCancel(err));
+      console.log(err);
     });
-    // console.log('cancel');
-    // console.log(cancel);
-    // cancel()
 
   };
 

@@ -1,19 +1,21 @@
-import axios from 'axios';
+import vAxios from './vAxios';
+import {AxiosRequestConfig, AxiosResponse} from 'axios';
 
 const vHttp = {
-  get(){
-    console.log('get');
-    //return axios.get()
+  get<T = any, R = AxiosResponse<T>, D = any>(url: string, config?: AxiosRequestConfig<D>): Promise<R> {
+
+    return vAxios.get(url, config);
   },
-  post(){
-    console.log('post');
+  post<T = any, R = AxiosResponse<T>, D = any>(url: string, data?: D, config?: AxiosRequestConfig<D>): Promise<R> {
+    return vAxios.post(url, config);
+
   },
-  put(){
+  put() {
     console.log('put');
   },
-  delete(){
+  delete() {
     console.log('delete');
   },
 };
 
-export default vHttp
+export default vHttp;

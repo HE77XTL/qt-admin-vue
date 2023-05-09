@@ -17,8 +17,9 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@vUtils": ["./src/common/utils.ts"]
+      "@/*": ["src/*"],
+      "@vUtils": ["./src/common/utils.ts"],
+      "@vServe": ["./src/common/serve/serve.ts"]
     }
   },
   "include": [

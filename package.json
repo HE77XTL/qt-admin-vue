@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit --skipLibCheck && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "updateAPI": "node ./src/common/request/autoImportApi.js"
   },
   "dependencies": {
     "axios": "^0.27.2",
