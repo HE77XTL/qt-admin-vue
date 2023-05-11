@@ -8,6 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AutoBreadcrumb: typeof import('./src/components/auto-breadcrumb.vue')['default']
+    AutoButton: typeof import('./src/components/auto-button.vue')['default']
     AutoTablePage: typeof import('./src/components/auto-table-page.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElForm: typeof import('element-plus/es')['ElForm']

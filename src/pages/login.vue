@@ -1,7 +1,7 @@
 <template>
   <div class="loginPage">
     <div>报备小程序</div>
-    <van-button type="primary" @click="submit">主要按钮</van-button>
+    <auto-button></auto-button>
   </div>
 </template>
 <script lang="ts" setup>
